@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Carte Google Maps{% endblock %}
+
+{% block body %}
+    <h1>Ma Carte Google Maps</h1>
+    <div id="map" style="height: 500px; width: 100%;"></div>
+
+    {# Script Google Maps API avec la clé API #}
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=initMap" async defer></script>
+
+    <script>
+        // Fonction d'initialisation de la carte
+        function initMap() {
+            // Coordonnées du centre de la carte (par exemple, Paris)
+            const center = { lat: 48.8566, lng: 2.3522 };
+
+            // Création de la carte
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 10,
+                center: center,
+            });
+
+            // Ajout d'un marqueur au centre
+            new google.maps.Marker({
+                position: center,
+                map: map,
+                title: "Paris, France",
+            });
+        }
+    </script>
+{% endblock %}

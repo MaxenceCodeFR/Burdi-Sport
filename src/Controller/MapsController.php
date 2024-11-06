@@ -1,18 +1,19 @@
 <?php
 
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class TestController extends AbstractController
+class MapsController extends AbstractController
 {
-    #[Route('/test', name: 'test')]
+    #[Route('/maps', name: 'maps')]
     public function index(): Response
     {
-        return $this->render('test/index.html.twig', [
-            'controller_name' => 'TestController',
+        return $this->render('maps/index.html.twig', [
+            'google_maps_api_key' => $_ENV['GOOGLE_MAPS_API_KEY'],
         ]);
     }
 }
